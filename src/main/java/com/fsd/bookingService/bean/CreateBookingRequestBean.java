@@ -4,7 +4,13 @@ import java.util.List;
 
 public class CreateBookingRequestBean {
 
-    private Long customerKey;
-    private Long vendorKey;
-    private List<ServiceMapping> services;
+    private List<String> services;
+
+    public List<String> getServices() {
+        return services;
+    }
+
+    public void setServices(List<String> services) {
+        this.services = services;
+    }
 }

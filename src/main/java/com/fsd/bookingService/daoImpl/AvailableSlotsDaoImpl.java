@@ -1,24 +1,48 @@
 package com.fsd.bookingService.daoImpl;
 
 import com.fsd.bookingService.dao.AvailableSlotsDao;
+//import com.fsd.bookingService.document.AvailableSlots;
+//import com.fsd.bookingService.repository.mongo.AvailableSlotsMongoRepository;
 import com.fsd.bookingService.document.AvailableSlots;
-import com.fsd.bookingService.repository.mongo.AvailableSlotsRepository;
+import com.fsd.bookingService.repository.mongo.AvailableSlotsMongoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 @Component
 public class AvailableSlotsDaoImpl implements AvailableSlotsDao {
 
-    @Autowired
-    AvailableSlotsRepository availableSlotsRepository;
 
+    @Autowired
+    AvailableSlotsMongoRepository availableSlotsRepository;
 
     @Override
-    public AvailableSlots getAvailableSlots(Long vendorkey, LocalDate date) {
-        AvailableSlots availableSlots=availableSlotsRepository.findSlotsByVendorkeyAndDate(vendorkey,date);
-        return availableSlots;
+    public AvailableSlots getAvailableSlots(String vendorId, LocalDate date) {
+        return availableSlotsRepository.findByVendorIdAndDate(vendorId,date);
     }
+
+
+//    @Autowired
+//    AvailableSlotsMongoRepository availableSlotsRepository;
+//
+//
+//    @Override
+//    public AvailableSlotsEntity getAvailableSlots(String vendorId, LocalDate date) {
+//        AvailableSlotsEntity availableSlots=availableSlotsRepository.findByVendorIdAndDate(vendorId,date);
+//        return availableSlots;
+//    }
+//
+//    @Override
+//    public String updateAvailableSlots(AvailableSlotsEntity availableSlotsEntity) {
+//        AvailableSlotsEntity availableSlots=getAvailableSlots(availableSlotsEntity.getVendorId(),availableSlotsEntity.getDate());
+//        if(null!=availableSlots){
+//            availableSlots.setSlots(availableSlotsEntity.getSlots());
+//            availableSlotsRepository.save(availableSlots);
+//            return "updated";
+//        }else{
+//            availableSlotsRepository.save(availableSlotsEntity);
+//            return "added";
+//        }
+//    }
 }

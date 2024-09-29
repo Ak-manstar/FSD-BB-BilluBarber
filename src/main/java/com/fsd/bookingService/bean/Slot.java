@@ -6,7 +6,7 @@ public class Slot {
 
     private LocalTime time;
     private int manpowerLeft;
-    private int seatLeft;
+   // private int seatLeft;
 
     public LocalTime getTime() {
         return time;
@@ -24,20 +24,13 @@ public class Slot {
         this.manpowerLeft = manpowerLeft;
     }
 
-    public int getSeatLeft() {
-        return seatLeft;
-    }
+//    public int getSeatLeft() {
+//        return seatLeft;
+//    }
+//
+//    public void setSeatLeft(int seatLeft) {
+//        this.seatLeft = seatLeft;
+//    }
 
-    public void setSeatLeft(int seatLeft) {
-        this.seatLeft = seatLeft;
-    }
 
-    @Override
-    public String toString() {
-        return "Slot{" +
-                "time='" + time + '\'' +
-                ", manpowerLeft=" + manpowerLeft +
-                ", seatLeft=" + seatLeft +
-                '}';
-    }
 }

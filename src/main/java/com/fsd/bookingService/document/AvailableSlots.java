@@ -1,17 +1,17 @@
 package com.fsd.bookingService.document;
 
 import com.fsd.bookingService.bean.Slot;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Document
 public class AvailableSlots {
-    @MongoId
+    @Id
     private String id;
-    private Long vendorKey;
+    private String vendorId;
     private LocalDate date;
     private List<Slot> slots;
 
@@ -23,12 +23,12 @@ public class AvailableSlots {
         this.id = id;
     }
 
-    public Long getVendorKey() {
-        return vendorKey;
+    public List<Slot> getSlots() {
+        return slots;
     }
 
-    public void setVendorKey(Long vendorKey) {
-        this.vendorKey = vendorKey;
+    public void setSlots(List<Slot> slots) {
+        this.slots = slots;
     }
 
     public LocalDate getDate() {
@@ -39,21 +39,11 @@ public class AvailableSlots {
         this.date = date;
     }
 
-    public List<Slot> getSlots() {
-        return slots;
+    public String getVendorId() {
+        return vendorId;
     }
 
-    public void setSlots(List<Slot> slots) {
-        this.slots = slots;
-    }
-
-    @Override
-    public String toString() {
-        return "AvailableSlots{" +
-                "id='" + id + '\'' +
-                ", vendorKey=" + vendorKey +
-                ", date=" + date +
-                ", slots=" + slots +
-                '}';
+    public void setVendorId(String vendorId) {
+        this.vendorId = vendorId;
     }
 }
