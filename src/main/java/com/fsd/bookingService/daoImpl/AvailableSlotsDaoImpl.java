@@ -18,8 +18,22 @@ public class AvailableSlotsDaoImpl implements AvailableSlotsDao {
     AvailableSlotsMongoRepository availableSlotsRepository;
 
     @Override
-    public AvailableSlots getAvailableSlots(String vendorId, LocalDate date) {
+    public AvailableSlots getAvailableSlots(String vendorId, String date) {
         return availableSlotsRepository.findByVendorIdAndDate(vendorId,date);
+    }
+
+    @Override
+    public String updateAvailableSlots(AvailableSlots availableSlots) {
+        AvailableSlots availableSlots1=getAvailableSlots(availableSlots.getVendorId(),availableSlots.getDate().toString());
+        if(null!=availableSlots1){
+            availableSlots1.setSlots(availableSlots.getSlots());
+            availableSlotsRepository.save(availableSlots);
+            return "updated";
+        }else{
+            availableSlotsRepository.save(availableSlots);
+            return "saved";
+        }
+
     }
 
 

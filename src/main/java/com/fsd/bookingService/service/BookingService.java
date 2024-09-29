@@ -1,12 +1,7 @@
 package com.fsd.bookingService.service;
 
 import com.fsd.bookingService.bean.AvailableSlotsResponseBean;
-import com.fsd.bookingService.bean.BookingDetailsResponseBean;
-import com.fsd.bookingService.bean.CreateBookingRequestBean;
-import com.fsd.bookingService.bean.Slot;
-//import com.fsd.bookingService.document.AvailableSlots;
-//import com.fsd.bookingService.document.BookingDetails;
-import com.fsd.bookingService.entity.AvailableSlotsEntity;
+import com.fsd.bookingService.document.BookingDetails;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -26,6 +21,6 @@ public interface BookingService {
 //    updateBookingStatus
 
     AvailableSlotsResponseBean getAvailableSlots(String vendorId, LocalDate dateTime);
-    BookingDetailsResponseBean createBooking(String vendorId, LocalDate dateTime , LocalTime time,List<String> services);
+    BookingDetails createBooking(String vendorId, LocalDate dateTime , LocalTime time, List<String> services);
 
 }
