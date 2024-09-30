@@ -21,6 +21,6 @@ public interface BookingService {
 //    updateBookingStatus
 
     AvailableSlotsResponseBean getAvailableSlots(String vendorId, LocalDate dateTime);
-    BookingDetails createBooking(String vendorId, LocalDate dateTime , LocalTime time, List<String> services);
+    BookingDetails createBooking(String vendorId, LocalDate dateTime , LocalTime time, List<String> services,String customerId);
 
 }

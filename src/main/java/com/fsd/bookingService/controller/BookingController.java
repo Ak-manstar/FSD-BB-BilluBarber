@@ -26,10 +26,8 @@ public class BookingController {
 
     @PostMapping("/{vendorId}")
     public ResponseEntity<ResponseBean> createBooking(@RequestBody List<String> services,@PathVariable("vendorId") String vendorId,
-                                                      @RequestParam LocalDate date, @RequestParam LocalTime time){
-//        , @RequestBody CreateBookingRequestBean createBookingRequestBean
-      //  CreateBookingRequestBean createBookingRequestBean=new CreateBookingRequestBean();
-        return new ResponseEntity<>(new ResponseBean(bookingService.createBooking(vendorId,date,time,services)), HttpStatus.OK);
+                                                      @RequestParam String customerId, @RequestParam LocalDate date, @RequestParam LocalTime time){
+        return new ResponseEntity<>(new ResponseBean(bookingService.createBooking(vendorId,date,time,services,customerId)), HttpStatus.OK);
     }
 //    createBooking
 //    getBookingDetails

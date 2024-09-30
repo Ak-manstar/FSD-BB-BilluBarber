@@ -10,9 +10,18 @@ import java.util.List;
 @Document
 public class AvailableSlots {
     @Id
+    private String id;
     private String vendorId;
     private String date;
     private List<Slot> slots;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public List<Slot> getSlots() {
         return slots;

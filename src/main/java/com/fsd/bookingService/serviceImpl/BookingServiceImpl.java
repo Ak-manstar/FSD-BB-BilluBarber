@@ -74,7 +74,7 @@ public class BookingServiceImpl implements BookingService {
     }
 
     @Override
-    public BookingDetails createBooking(String vendorId, LocalDate date,LocalTime time,List<String> services) {
+    public BookingDetails createBooking(String vendorId, LocalDate date,LocalTime time,List<String> services,String customerId) {
         String bookingId="BO"+BookingHashUtils.getId();
         AvailableSlotsResponseBean availableSlotsResponseBean=getAvailableSlots(vendorId,date);
         List<Slot> availableSlots=availableSlotsResponseBean.getSlots();
@@ -101,6 +101,7 @@ public class BookingServiceImpl implements BookingService {
 
         BookingDetails bookingDetails=new BookingDetails();
         bookingDetails.setBookingId(bookingId);
+        bookingDetails.setCustomerId(customerId);
         bookingDetails.setDate(date.toString());
         bookingDetails.setVendorId(vendorId);
         bookingDetails.setSlots(slots);
