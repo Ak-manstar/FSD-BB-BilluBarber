@@ -1,6 +1,6 @@
 package com.fsd.bookingService.service;
 
-import com.fsd.bookingService.bean.AvailableSlotsResponseBean;
+import com.fsd.bookingService.bean.*;
 import com.fsd.bookingService.document.BookingDetails;
 import org.springframework.stereotype.Component;
 
@@ -11,16 +11,14 @@ import java.util.List;
 @Component
 public interface BookingService {
 
-    //here you can declare methods of service
-
-    //    getAvailableSlots
-//    createBooking
-//    getBookingDetails
 //    updateBookingDetails
 //    cancelbooking
 //    updateBookingStatus
 
     AvailableSlotsResponseBean getAvailableSlots(String vendorId, LocalDate dateTime);
-    BookingDetails createBooking(String vendorId, LocalDate dateTime , LocalTime time, List<String> services,String customerId);
-
+    BookingDetails createBooking(String vendorId, LocalDate dateTime , List<SlotBookingRequestBean> services, String customerId);
+    BookingDetails getBookingDetails(String bookingId);
+    CustomerBookingHistoryResponseBean getCustomerBookingHistory(String customerId);
+    VendorBookingHistoryResponseBean getVendorBookingHistory(String vendorId);
+//    BookingDetails updateBooking(String bookingId, UpdateBookingRequestBean updateBookingRequestBean);
 }

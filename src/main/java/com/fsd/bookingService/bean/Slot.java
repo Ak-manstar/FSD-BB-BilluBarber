@@ -4,15 +4,14 @@ import java.time.LocalTime;
 
 public class Slot {
 
-    private LocalTime time;
+    private String time;
     private int manpowerLeft;
-   // private int seatLeft;
 
-    public LocalTime getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(LocalTime time) {
+    public void setTime(String time) {
         this.time = time;
     }
 

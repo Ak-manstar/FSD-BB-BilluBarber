@@ -27,7 +27,7 @@ public class AvailableSlotsDaoImpl implements AvailableSlotsDao {
         AvailableSlots availableSlots1=getAvailableSlots(availableSlots.getVendorId(),availableSlots.getDate().toString());
         if(null!=availableSlots1){
             availableSlots1.setSlots(availableSlots.getSlots());
-            availableSlotsRepository.save(availableSlots);
+            availableSlotsRepository.save(availableSlots1);
             return "updated";
         }else{
             availableSlotsRepository.save(availableSlots);

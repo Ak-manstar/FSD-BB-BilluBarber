@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Repository
 public interface AvailableSlotsMongoRepository extends MongoRepository<AvailableSlots,String> {
 
-    @Query("{ $and:[{vendorId:'?0'}, {date:'?1'}] }")
+//    @Query("{ $and:[{vendorId:'?0'}, {date:'?1'}] }")
     AvailableSlots findByVendorIdAndDate(String vendorId, String date);
 
 

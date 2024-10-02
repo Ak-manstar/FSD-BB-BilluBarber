@@ -4,6 +4,7 @@ public class BookedSlotResponseBean {
 
     private String serviceName;
     private String time;
+    private Long price;
 
     public String getServiceName() {
         return serviceName;
@@ -19,5 +20,13 @@ public class BookedSlotResponseBean {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public Long getPrice() {
+        return price;
+    }
+
+    public void setPrice(Long price) {
+        this.price = price;
     }
 }
