@@ -19,7 +19,6 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 
@@ -176,8 +175,8 @@ public class BookingServiceImpl implements BookingService {
 //        }
 
 
-        return bookingDetails1;
-    }
+//        return bookingDetails1;
+//    }
 
     private UserBean getUser(String customerId) {
         String json =new JSONObject(userClient.getUserDetails(customerId).getBody()).getJSONObject("payload").toString();
