@@ -1,5 +1,6 @@
 package com.fsd.bookingService.controller;
 
+import com.fsd.bookingService.bean.CreateBookingRequestBean;
 import com.fsd.bookingService.bean.ResponseBean;
 import com.fsd.bookingService.bean.SlotBookingRequestBean;
 import com.fsd.bookingService.bean.UpdateBookingRequestBean;
@@ -27,9 +28,9 @@ public class BookingController {
     }
 
     @PostMapping("/{vendorId}")
-    public ResponseEntity<ResponseBean> createBooking(@RequestBody List<SlotBookingRequestBean> services, @PathVariable("vendorId") String vendorId,
-                                                      @RequestParam String customerId, @RequestParam LocalDate date){
-        return new ResponseEntity<>(new ResponseBean(bookingService.createBooking(vendorId,date,services,customerId)), HttpStatus.OK);
+    public ResponseEntity<ResponseBean> createBooking(@RequestBody CreateBookingRequestBean createBookingRequestBean, @PathVariable("vendorId") String vendorId,
+                                                      @RequestParam String customerId){
+        return new ResponseEntity<>(new ResponseBean(bookingService.createBooking(vendorId,createBookingRequestBean,customerId)), HttpStatus.OK);
     }
 
     @GetMapping("/bookingDetails/{bookingId}")
