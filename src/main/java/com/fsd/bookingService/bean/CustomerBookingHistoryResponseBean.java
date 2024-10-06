@@ -4,6 +4,7 @@ import java.util.List;
 
 public class CustomerBookingHistoryResponseBean {
     private String customerName;
+    private String customerId;
     private Long customerPhone;
     private List<CustomerVendorBookingDetails> serviceHistory;
 
@@ -29,5 +30,13 @@ public class CustomerBookingHistoryResponseBean {
 
     public void setCustomerPhone(Long customerPhone) {
         this.customerPhone = customerPhone;
+    }
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 }

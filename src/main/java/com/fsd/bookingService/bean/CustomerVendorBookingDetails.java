@@ -5,6 +5,8 @@ import java.util.List;
 public class CustomerVendorBookingDetails {
 
     private String vendorName;
+    private String vendorId;
+    private String bookingId;
     private Long vendorPhone;
     private String vendorAddress;
     private String date;
@@ -48,5 +50,21 @@ public class CustomerVendorBookingDetails {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getVendorId() {
+        return vendorId;
+    }
+
+    public void setVendorId(String vendorId) {
+        this.vendorId = vendorId;
+    }
+
+    public String getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(String bookingId) {
+        this.bookingId = bookingId;
     }
 }

@@ -3,6 +3,7 @@ package com.fsd.bookingService.bean;
 public class BookedSlotResponseBean {
 
     private String serviceName;
+    private Long vendorServiceKey;
     private String time;
     private Long price;
 
@@ -28,5 +29,13 @@ public class BookedSlotResponseBean {
 
     public void setPrice(Long price) {
         this.price = price;
+    }
+
+    public Long getVendorServiceKey() {
+        return vendorServiceKey;
+    }
+
+    public void setVendorServiceKey(Long vendorServiceKey) {
+        this.vendorServiceKey = vendorServiceKey;
     }
 }

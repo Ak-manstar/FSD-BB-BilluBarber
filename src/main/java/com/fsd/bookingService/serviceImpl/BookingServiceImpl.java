@@ -123,11 +123,14 @@ public class BookingServiceImpl implements BookingService {
         List<BookingDetails> bookingHistory=bookingDetailsDao.getBookingHistoryByCustomerId(customerId);
         CustomerBookingHistoryResponseBean customerBookingHistoryResponseBean=new CustomerBookingHistoryResponseBean();
         customerBookingHistoryResponseBean.setCustomerName(customer.getUserName());
+        customerBookingHistoryResponseBean.setCustomerId(customerId);
         customerBookingHistoryResponseBean.setCustomerPhone(customer.getMobile());
         List<CustomerVendorBookingDetails> bookingDetails=bookingHistory.parallelStream().map(x->{
             CustomerVendorBookingDetails customerVendorBookingDetails=new CustomerVendorBookingDetails();
             UserBean vendorDetails= getUser(x.getVendorId());
             customerVendorBookingDetails.setVendorName(vendorDetails.getUserName());
+            customerVendorBookingDetails.setVendorId(vendorDetails.getUserId());
+            customerVendorBookingDetails.setBookingId(x.getBookingId());
             customerVendorBookingDetails.setVendorPhone(vendorDetails.getMobile());
             customerVendorBookingDetails.setServices(x.getSlots());
             customerVendorBookingDetails.setDate(x.getDate());
@@ -201,6 +204,7 @@ public class BookingServiceImpl implements BookingService {
                 int finalTemp = temp;
                 VerdorServiceResponseBean verdorServiceResponseBean=vendorResponseBean.getServices().stream().filter(x->
                         (x.getVendorServicekey() == services.get(finalTemp).getServiceKey())).findFirst().orElse(null);
+                bookedSlotResponseBean.setVendorServiceKey(services.get(finalTemp).getServiceKey());
                 bookedSlotResponseBean.setTime(services.get(finalTemp).getTime().toString());
                 bookedSlotResponseBean.setServiceName(verdorServiceResponseBean.getServiceName());
                 bookedSlotResponseBean.setPrice(verdorServiceResponseBean.getPrice());
