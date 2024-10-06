@@ -173,8 +173,6 @@ public class BookingServiceImpl implements BookingService {
 //        if(!updateBookingRequestBean.getAddServices().isEmpty()){
 //            bookingDetails= createOrUpdateBooking(bookingDetails.getVendorId(),LocalDate.parse(bookingDetails.getDate()),updateBookingRequestBean.getAddServices(),bookingDetails.getCustomerId(),bookingDetails.getBookingId());
 //        }
-
-
 //        return bookingDetails1;
 //    }
 
