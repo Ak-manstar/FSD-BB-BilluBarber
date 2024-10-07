@@ -2,8 +2,6 @@ package com.fsd.bookingService.controller;
 
 import com.fsd.bookingService.bean.CreateBookingRequestBean;
 import com.fsd.bookingService.bean.ResponseBean;
-import com.fsd.bookingService.bean.SlotBookingRequestBean;
-import com.fsd.bookingService.bean.UpdateBookingRequestBean;
 import com.fsd.bookingService.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,8 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
 
 @RestController
 @RequestMapping("/booking")
@@ -48,15 +44,26 @@ public class BookingController {
         return new ResponseEntity<>(new ResponseBean(bookingService.getVendorBookingHistory(vendorId)), HttpStatus.OK);
     }
 
-//    @PutMapping("/update/booking/{bookingId}")
-//    public ResponseEntity<ResponseBean> updateBooking(@PathVariable("bookingId") String bookingId, @RequestBody UpdateBookingRequestBean updateBookingRequestBean){
-//        return new ResponseEntity<>(new ResponseBean(bookingService.updateBooking(bookingId,updateBookingRequestBean)), HttpStatus.OK);
-//    }
+    @GetMapping("/vendor/history/{vendorId}/{date}")
+    public ResponseEntity<ResponseBean> getVendorBookingHistoryOnDate(@PathVariable("vendorId") String vendorId,@PathVariable("date") String date){
+        return new ResponseEntity<>(new ResponseBean(bookingService.getVendorBookingHistoryOnDate(vendorId,date)), HttpStatus.OK);
+    }
+
+    @PutMapping("/remove/service/{bookingId}")
+    public ResponseEntity<ResponseBean> updateBooking(@PathVariable("bookingId") String bookingId, @RequestParam String vendorId,@RequestParam Long vendorServiceKey){
+        return new ResponseEntity<>(new ResponseBean(bookingService.removeServiceFormExistingBooking(bookingId,vendorId,vendorServiceKey)), HttpStatus.OK);
+    }
+
+    @PutMapping("/cancel/{bookingId}")
+    public ResponseEntity<ResponseBean> cancelBooking(@PathVariable("bookingId") String bookingId){
+        return new ResponseEntity<>(new ResponseBean(bookingService.cancelBooking(bookingId)), HttpStatus.OK);
+    }
+
+
 
 
 
 //    updateBookingDetails
-//    cancelbooking
 //    updateBookingStatus
 
 }

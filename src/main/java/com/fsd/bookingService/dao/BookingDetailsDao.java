@@ -12,4 +12,5 @@ public interface BookingDetailsDao {
     BookingDetails getBookingDetailsByBookingId(String bookingId);
     List<BookingDetails> getBookingHistoryByCustomerId(String customerId);
     List<BookingDetails> getBookingHistoryByVendorId(String vendorId);
+    List<BookingDetails> getBookingHistoryByVendorIdAndDate(String vendorId, String date);
 }

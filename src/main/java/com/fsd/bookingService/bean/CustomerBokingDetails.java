@@ -7,6 +7,7 @@ public class CustomerBokingDetails {
     private String customerName;
     private Long customerPhone;
     private String date;
+    private String bookingId;
     private List<BookedSlotResponseBean> services;
 
     public String getCustomerName() {
@@ -41,4 +42,11 @@ public class CustomerBokingDetails {
         this.services = services;
     }
 
+    public String getBookingId() {
+        return bookingId;
+    }
+
+    public void setBookingId(String bookingId) {
+        this.bookingId = bookingId;
+    }
 }

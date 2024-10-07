@@ -3,12 +3,14 @@ package com.fsd.bookingService.exception;
 import com.fsd.bookingService.bean.ErrorBean;
 import org.springframework.http.HttpStatus;
 
-public class TemplateException extends RuntimeException{
+import java.util.function.Supplier;
+
+public class BookingServiceException  extends RuntimeException implements Supplier{
 
     private ErrorBean errorBean;
     private HttpStatus httpStatus;
 
-    public TemplateException(ErrorBean errorBean, HttpStatus httpStatus) {
+    public BookingServiceException(ErrorBean errorBean, HttpStatus httpStatus) {
         this.errorBean = errorBean;
         this.httpStatus = httpStatus;
     }
@@ -23,9 +25,14 @@ public class TemplateException extends RuntimeException{
 
     @Override
     public String toString() {
-        return "TemplateException{" +
+        return "BookingServiceException{" +
                 "errorBean=" + errorBean +
                 ", httpStatus=" + httpStatus +
                 '}';
+    }
+
+    @Override
+    public Object get() {
+        return null;
     }
 }

@@ -8,8 +8,8 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 @ControllerAdvice
 public class TemplateControllerAdvice extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(value=TemplateException.class)
-    protected ResponseEntity<Object> handleTemplateException(TemplateException exception){
+    @ExceptionHandler(value= BookingServiceException.class)
+    protected ResponseEntity<Object> handleTemplateException(BookingServiceException exception){
         return new ResponseEntity<>(exception.getErrorBean(),exception.getHttpStatus());
     }
 }

@@ -2,6 +2,7 @@ package com.fsd.bookingService.daoImpl;
 
 import com.fsd.bookingService.dao.BookingDetailsDao;
 import com.fsd.bookingService.document.BookingDetails;
+import com.fsd.bookingService.helper.BookingStatus;
 import com.fsd.bookingService.repository.mongo.BookingDetailsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,10 +19,12 @@ public class BookingDetailsDaoImpl implements BookingDetailsDao {
     public String saveBookingDetails(BookingDetails bookingDetails) {
         BookingDetails existingBooking=getBookingDetailsByBookingId(bookingDetails.getBookingId());
         if(null!=existingBooking){
-            existingBooking.getSlots().addAll(bookingDetails.getSlots());
+            existingBooking.setSlots(bookingDetails.getSlots());
+            existingBooking.setStatus(bookingDetails.getStatus());
             bookingDetailsRepository.save(existingBooking);
             return existingBooking.getBookingId();
         }else{
+            bookingDetails.setStatus(BookingStatus.BOOKED);
             bookingDetailsRepository.save(bookingDetails);
             return bookingDetails.getBookingId();
         }
@@ -40,5 +43,10 @@ public class BookingDetailsDaoImpl implements BookingDetailsDao {
     @Override
     public List<BookingDetails> getBookingHistoryByVendorId(String vendorId) {
         return bookingDetailsRepository.findByVendorId(vendorId);
+    }
+
+    @Override
+    public List<BookingDetails> getBookingHistoryByVendorIdAndDate(String vendorId, String date) {
+        return bookingDetailsRepository.findByVendorIdAndDate(vendorId,date);
     }
 }

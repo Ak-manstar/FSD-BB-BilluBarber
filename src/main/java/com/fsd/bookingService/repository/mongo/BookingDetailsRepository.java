@@ -15,4 +15,6 @@ public interface BookingDetailsRepository extends MongoRepository<BookingDetails
     List<BookingDetails> findByCustomerId(String customerId);
 
     List<BookingDetails> findByVendorId(String vendorId);
+
+    List<BookingDetails> findByVendorIdAndDate(String vendorId, String date);
 }

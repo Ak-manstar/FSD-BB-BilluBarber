@@ -1,6 +1,7 @@
 package com.fsd.bookingService.document;
 
 import com.fsd.bookingService.bean.BookedSlotResponseBean;
+import com.fsd.bookingService.helper.BookingStatus;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -14,14 +15,14 @@ public class BookingDetails {
     private String vendorId;
     private String customerId;
     private String date;
-    private String status;
+    private BookingStatus status;
     private List<BookedSlotResponseBean> slots;
 
-    public String getStatus() {
+    public BookingStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(BookingStatus status) {
         this.status = status;
     }
 

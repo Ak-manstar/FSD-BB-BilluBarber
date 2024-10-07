@@ -5,8 +5,6 @@ import com.fsd.bookingService.document.BookingDetails;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.List;
 
 @Component
 public interface BookingService {
@@ -20,5 +18,7 @@ public interface BookingService {
     BookingDetails getBookingDetails(String bookingId);
     CustomerBookingHistoryResponseBean getCustomerBookingHistory(String customerId);
     VendorBookingHistoryResponseBean getVendorBookingHistory(String vendorId);
-//    BookingDetails updateBooking(String bookingId, UpdateBookingRequestBean updateBookingRequestBean);
+    BookingDetails removeServiceFormExistingBooking(String bookingId, String vendorId, Long vendorServiceKey);
+    VendorBookingHistoryResponseBean getVendorBookingHistoryOnDate(String vendorId, String date);
+    BookingDetails cancelBooking(String bookingId);
 }

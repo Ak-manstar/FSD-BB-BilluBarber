@@ -10,10 +10,10 @@ import java.util.List;
 
 public class MapperUtil {
 
-    public static AvailableSlots mapAvailableSlots(String vendorId, LocalDate date, List<Slot> availableSlots) {
+    public static AvailableSlots mapAvailableSlots(String vendorId, String date, List<Slot> availableSlots) {
         AvailableSlots availableSlotsDoc=new AvailableSlots();
         availableSlotsDoc.setVendorId(vendorId);
-        availableSlotsDoc.setDate(date.toString());
+        availableSlotsDoc.setDate(date);
         availableSlotsDoc.setSlots(availableSlots);
         return availableSlotsDoc;
     }
