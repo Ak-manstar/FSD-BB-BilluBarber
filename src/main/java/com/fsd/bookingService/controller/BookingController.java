@@ -12,6 +12,7 @@ import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/booking")
+@CrossOrigin
 public class BookingController {
 
     @Autowired

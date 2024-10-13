@@ -102,6 +102,7 @@ public class BookingServiceImpl implements BookingService {
         customerBookingHistoryResponseBean.setCustomerPhone(customer.getMobile());
         List<CustomerVendorBookingDetails> bookingDetails=bookingHistory.parallelStream().map(x->{
             CustomerVendorBookingDetails customerVendorBookingDetails=new CustomerVendorBookingDetails();
+            FetchVendorResponseBean vendorResponseBean=fetchVedorDetailsByVendorId(x.getVendorId());
             UserBean vendorDetails= getUser(x.getVendorId());
             customerVendorBookingDetails.setVendorName(vendorDetails.getUserName());
             customerVendorBookingDetails.setVendorId(vendorDetails.getUserId());
@@ -109,6 +110,10 @@ public class BookingServiceImpl implements BookingService {
             customerVendorBookingDetails.setVendorPhone(vendorDetails.getMobile());
             customerVendorBookingDetails.setServices(x.getSlots());
             customerVendorBookingDetails.setDate(x.getDate());
+            String address = "";
+            address+=(null!=vendorResponseBean.getAddressLine1())?vendorResponseBean.getAddressLine1():"";
+            address+=(null!=vendorResponseBean.getAddressLine2())?", "+vendorResponseBean.getAddressLine2():"";
+            customerVendorBookingDetails.setVendorAddress(address);
             return customerVendorBookingDetails;
         }).collect(Collectors.toList());
         customerBookingHistoryResponseBean.setServiceHistory(bookingDetails);
